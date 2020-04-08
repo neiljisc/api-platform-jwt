@@ -1,0 +1,4 @@
+token=` ./run-this-to-login | sed 's/.*://' | sed 's/"//g' | sed 's/}//' `
+
+curl -H "Authorization: Bearer $token" https://localhost:8443/greetings --insecure
+
