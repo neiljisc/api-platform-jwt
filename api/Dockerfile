@@ -35,6 +35,7 @@ RUN set -eux; \
 	docker-php-ext-install -j$(nproc) \
 		intl \
 		pdo_pgsql \
+		pdo_mysql \
 		zip \
 	; \
 	pecl install \

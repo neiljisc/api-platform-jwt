@@ -55,6 +55,14 @@ services:
         published: 8443
         protocol: tcp
 
+  mysql:
+    image: mysql
+    environment:
+     - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+     - MYSQL_DATABASE=api
+    volumes:
+     - mysql-data:/var/lib/mysql
+
   db:
     image: postgres:12-alpine
     environment:
@@ -137,5 +145,6 @@ services:
         protocol: tcp
 
 volumes:
+  mysql-data: {}
   db-data: {}
   dev-certs: {}
