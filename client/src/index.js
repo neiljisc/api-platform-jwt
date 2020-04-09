@@ -12,16 +12,23 @@ import {
   routerMiddleware
 } from 'connected-react-router';
 import 'bootstrap/dist/css/bootstrap.css';
-import '@fortawesome/fontawesome-free/css/all.css';
+//import 'font-awesome/css/font-awesome.css';
 import * as serviceWorker from './serviceWorker';
 // Import your reducers and routes here
 import Welcome from './Welcome';
+
+// import reducers
+import greeting from './reducers/greeting/';
+
+//import routes
+import greetingRoutes from './routes/greeting';
 
 const history = createBrowserHistory();
 const store = createStore(
   combineReducers({
     router: connectRouter(history),
     form,
+    greeting,
     /* Add your reducers here */
   }),
   applyMiddleware(routerMiddleware(history), thunk)
@@ -33,6 +40,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/" component={Welcome} strict={true} exact={true}/>
         {/* Add your routes here */}
+        { greetingRoutes }
         <Route render={() => <h1>Not Found</h1>} />
       </Switch>
     </ConnectedRouter>
